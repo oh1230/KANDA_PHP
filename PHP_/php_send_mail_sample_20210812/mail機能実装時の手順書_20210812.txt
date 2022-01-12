@@ -1,0 +1,53 @@
+
+①C:\usr\kis_php_pkg_ver4.8\xampp階層のsendmailフォルダにあるsendmail.iniの
+　各パラメータを以下の設定値に書き換える
+　　smtp_server=smtp.gmail.com
+　　smtp_port=587
+
+　　auth_username=ご自身のGmailアカウント
+　　auth_password=ご自身のGmailパスワード
+
+　　force_sender=ご自身のGmailアカウント
+
+②C:\usr\kis_php_pkg_ver4.8\xampp\php階層にあるphp.iniの
+　[mail function]の以下のコメントアウトを解除する
+
+（★MAC環境の方はMAMPで動かしており、上記のiniファイルそもそも無い場合がありますので、注意が必要です。
+下記のサイトを参考に、上記php.ini、sendmail.iniを同様に設定することができますので、ご認識おきください。
+https://dezanari.com/mamp-mail/）
+
+　　SMTP = localhost
+　　smtp_port = 25
+　　sendmail_path = "C:\usr\kis_php_pkg_ver4.8\xampp\sendmail\sendmail.exe -t"
+　
+　※　;を削除して、コメントアウトを解除します。
+
+
+　※32ビットオペレーティングシステムの場合は以下も設定
+　　sendmail_from = ご自身のGmailアカウント
+
+③設定変更後、PHPのApacheを一度再起動する。
+
+④ご自分のGmailアカウントで以下の設定を有効にする。
+
+　　５－１. ブラウザから自分のGmailアカウントへログイン
+
+　　５－２. 下記URLから自分のGmailアカウント設定を変更する
+
+　　　　https://myaccount.google.com/lesssecureapps?pli=1
+
+　　　　安全性の低いアプリの許可: 無効
+　　　　　　　　　　↓
+　　　　安全性の低いアプリの許可: 有効
+
+
+⑤mb_send_mail()メソッドが使えるようになるので、
+　test_mail.phpを実行してみる
+
+
+※動作確認後は変更した許可設定も元に戻しておいてください。
+※普段Gmailを開いていないPCでプログラムを動かしている場合は、アクセスがブロックされることがあるので、
+　プログラムを動かすPCでGmailにログインし、端末を認証しておいてください。
+
+
+
